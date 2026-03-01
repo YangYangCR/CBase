@@ -7,4 +7,11 @@ add_executable(dor main.cpp
         first.cpp
         add.cpp
         add.h
+        sizeof_demo.cpp
+        sizeof_demo.h
+        namespace/goo.cpp
+        namespace/foo.cpp
+        namespace/foo.h
+        namespace/goo.h
+        namespace/constants.h
 )
