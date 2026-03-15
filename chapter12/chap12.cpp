@@ -21,6 +21,7 @@ void func2(std::string *ptr) {
 
 void func3(std::string *&ptr) {
     std::string a = "20";
+    // *ptr = a;
     ptr = &a;
 }
 
@@ -28,9 +29,6 @@ void func3(std::string *&ptr) {
 int main() {
     std::string str = "10";
     std::string *p = &str;
-    // func0(str);
-    // func1(str);
-    // func2(p);
-    func3(p); //编译报错 它要求 传入一个“指针变量”，而 &str 只是一个临时值（rvalue），不是变量。
+    func3(p);
     std::cout << str << std::endl;
 }
