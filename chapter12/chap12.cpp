@@ -3,42 +3,34 @@
 //
 #include <iostream>
 
-// 指针更改为指向其他对象
-int point() {
-    std::cout << "point start ..." << '\n';
-    int x{5};
-    int *ptr{&x};
-    std::cout << x << '\n';
-    std::cout << *ptr << '\n';
 
-    int y{10};
-    ptr = &y;  // 修改指针指向其他对象
-    std::cout << x << '\n';
-    std::cout << *ptr << '\n';
-    std::cout << "point end ..." << '\n';
-    return 0;
+void func0(std::string ptr) {
+    std::string a = "20";
+    ptr = a;
 }
 
-int point1() {
-    std::cout << "point1 start ..." << '\n';
-    int x{5};
-    int* ptr{&x};
-    std::cout << x << '\n';
-    std::cout << *ptr << '\n';
-    *ptr = 10;  // 修改指针指向的值
-    std::cout << x << '\n';
-    std::cout << *ptr << '\n';
-    std::cout << "point1 end ..." << '\n';
-    return 0;
+void func1(std::string &ptr) {
+    std::string a = "20";
+    ptr = a;
 }
 
+void func2(std::string *ptr) {
+    std::string a = "20";
+    *ptr = a;
+}
+
+void func3(std::string *&ptr) {
+    std::string a = "20";
+    ptr = &a;
+}
+
+// 函数参数按值传递,即拷贝副本
 int main() {
-    int x{5};
-    std::cout << x << '\n'; // 打印变量 x 的值
-    std::cout << &x << '\n'; // 打印变量 x 的地址
-    std::cout << *(&x) << '\n'; // 解地址
-    int *ptr1{&x};
-    std::cout << *ptr1 << '\n';
-    point();
-    point1();
+    std::string str = "10";
+    std::string *p = &str;
+    // func0(str);
+    // func1(str);
+    // func2(p);
+    func3(p); //编译报错 它要求 传入一个“指针变量”，而 &str 只是一个临时值（rvalue），不是变量。
+    std::cout << str << std::endl;
 }
