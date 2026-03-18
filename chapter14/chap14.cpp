@@ -20,11 +20,20 @@ public:
         std::cout << m_day << "/" << m_month << "/" << m_year << std::endl;
         std::cout << str << std::endl;
     }
+
+    Date() = default;
+
+    Date(int day, int month, int year) {
+        m_day = day;
+        m_month = month;
+        m_year = year;
+    }
 };
 
 
 int main() {
     std::cout << "hello world!" << std::endl;
+    // 这个初始化动作相当于调用构造器,且构造器必须是public修饰的
     Date dateObj{1, 2, 2025};
     dateObj.print();
     return 0;
